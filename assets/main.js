@@ -89,11 +89,11 @@ function showNoSentimentScoreInfo(sentimentScore, comparativeScore){
 
 function getSentimentImageURL(comparativeScore) {
  if (comparativeScore > 0) { // happy
-   return "/images/happy.png";
+   return "images/happy.png";
  }
  if (comparativeScore < 0) { // angry
-   return "/images/angry.png";
+   return "images/angry.png";
  }
  // neutral
- return "/images/confused.png";
+ return "images/confused.png";
 }
