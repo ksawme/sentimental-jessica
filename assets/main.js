@@ -6,7 +6,7 @@ $(function () {
     width:'100%',
     height:'220px'
   });
-  
+
   client.get('ticket.requester.id').then(
     function(data){
       var user_id = data['ticket.requester.id'];
@@ -54,7 +54,8 @@ function getSentimentScore(client, ticketText) {
       var sentimentScoreResponse = JSON.parse(data);
       var sentimentScore = sentimentScoreResponse.sentimentScore || 0;
       var sentimentComparativeScore = sentimentScoreResponse.comparativeScore || 0;
-      var sentimentImage = sentimentScoreResponse.sentimentImage;
+      // var sentimentImage = sentimentScoreResponse.sentimentImage;
+      var sentimentImage = getSentimentImageURL(sentimentComparativeScore || 0);
       showSentimentScoreInfo(sentimentScore, sentimentComparativeScore, sentimentImage);
 
     },
@@ -84,4 +85,15 @@ function showNoSentimentScoreInfo(sentimentScore, comparativeScore){
   var template = Handlebars.compile(source);
   var html = template(sentiment_score_data);
   $('#content').html(html);
+}
+
+function getSentimentImageURL(comparativeScore) {
+ if (comparativeScore > 0) { // happy
+   return "/images/happy.png";
+ }
+ if (comparativeScore < 0) { // angry
+   return "/images/angry.png";
+ }
+ // neutral
+ return "/images/confused.png";
 }

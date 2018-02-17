@@ -13,14 +13,6 @@
     }
   },
   "domainWhitelist": ["localhost:3000", "https://whispering-retreat-36489.herokuapp.com"],
-  "parameters": [
-     {
-       "name": "token",
-       "type": "text",
-       "secure": true,
-       "required": true
-     }
-   ],
   "version": "1.0",
   "frameworkVersion": "2.0"
 }
