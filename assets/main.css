@@ -3,21 +3,9 @@ footer {
   padding-top: 20px;
 }
 
-.data {
-  color: #363;
-  padding-left: 6px;
-  /* font-size: 12px;
-	padding-top: 2px; */
-}
-
 .loader {
   color: #363;
   font-size: 12px;
-}
-
-#content td {
-	font-size: 12px;
-	padding-top: 2px;
 }
 
 .emoji {

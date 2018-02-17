@@ -12,37 +12,6 @@
     <a href="http://www.cogzidel.com/contact-us/" target="_blank">Report bugs</a>
   </footer>
 
-  <script id="requester-template" type="text/x-handlebars-template">
-    <table>
-    <tr>
-      <td>Customer:</td>
-      <td class="data">{{name}}</td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td class="data">{{email}}</td>
-    </tr>
-    <tr>
-      <td>Phone:</td>
-      <td class="data">{{phone}}</td>
-    </tr>
-    {{#if tags}}
-    <tr>
-      <td>Tags:</td>
-      <td class="data">{{#each tags}}{{this}} {{/each}}</td>
-    </tr>
-    {{/if}}
-    <tr>
-      <td>Added:</td>
-      <td class="data">{{created_at}}</td>
-    </tr>
-    <tr>
-      <td>Last signed in:</td>
-      <td class="data">{{last_login_at}}</td>
-    </tr>
-    </table>
-  </script>
-
   <script id="sentiment-score-template" type="text/x-handlebars-template">
 
     <img class="emoji" id="imgSentimentEmoji" src={{sentimentImage}}>
@@ -53,11 +22,6 @@
   <script id="no-sentiment-score-template" type="text/x-handlebars-template">
     <p>Sentiment score is not available as Jessica is waiting for customer response!</p>
   </script>
-
-  <script id="error-template" type="text/x-handlebars-template">
-    <p>{{status}} - {{statusText}} error. Please report a bug at the link below.</p>
-  </script>
-  <!-- <script type="text/javascript" src="require.js"></script> -->
 
   <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.8/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery/3.2.1/jquery.min.js"></script>
