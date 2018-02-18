@@ -57,7 +57,6 @@ function getSentimentScore(client, ticketText) {
       // var sentimentImage = sentimentScoreResponse.sentimentImage;
       var sentimentImage = getSentimentImageURL(sentimentComparativeScore || 0);
       showSentimentScoreInfo(sentimentScore, sentimentComparativeScore, sentimentImage);
-
     },
   );
 }

@@ -1,6 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,700,500'>
   <link href="https://cdn.jsdelivr.net/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="main.css" rel="stylesheet">
 </head>
@@ -13,7 +14,7 @@
 
     <script id="sentiment-score-template" type="text/x-handlebars-template">
       <img class="emoji" id="imgSentimentEmoji" src={{sentimentImage}}>
-      <p> Sentiment score is {{comparativeScore}} & it's at {{sentimentScorePercentage}}%</p>
+      <p id="sentimentScore" class="sentimentScoreNeutral"> Sentiment score is {{comparativeScore}} & it's at {{sentimentScorePercentage}}%</p>
     </script>
     <script id="no-sentiment-score-template" type="text/x-handlebars-template">
       <p>Sentiment score is not available as Jessica is waiting for customer response!</p>
@@ -22,6 +23,7 @@
     <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.8/handlebars.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

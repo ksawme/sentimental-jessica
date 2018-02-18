@@ -15,3 +15,7 @@ footer {
     margin-right: auto;
     padding-bottom: 10px;
 }
+
+.sentimentScoreNeutral{
+  font-family: 'Roboto', sans-serif;
+}
