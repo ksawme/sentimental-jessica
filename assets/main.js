@@ -46,11 +46,12 @@ function extractContent(value){
 function getSentimentScore(client, ticketText, token) {
   var settings = {
   // url: 'http://localhost:3000/sentimentScoreZendesk',
-  url: 'http://localhost:3000/sentimentalanalysis',
-  //url: 'https://whispering-retreat-36489.herokuapp.com/sentimentScoreZendesk',
+  // url: 'http://localhost:3000/sentimentalanalysis',
+  // url: 'https://whispering-retreat-36489.herokuapp.com/sentimentScoreZendesk',
+  url: 'https://whispering-retreat-36489.herokuapp.com/sentimentalanalysis',
   // headers: {"Authorization": "Bearer PyOAYC3N62gqpf"},
   headers: {"x-auth": token},
-  secure: true,
+  // secure: true,
   type: 'POST',
   contentType: 'application/json',
   data: JSON.stringify({"text": ticketText})
