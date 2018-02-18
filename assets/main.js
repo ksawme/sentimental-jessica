@@ -1,5 +1,5 @@
 $(function () {
-  var loaderMessage = '<div class="loader">Relax! Jessica is performing sentimental analysis on the latest ticket response...</div>'
+  var loaderMessage = '<div class="loader">Relax! Jessica is now performing sentimental analysis on the latest ticket response...</div>'
   $('#content').html(loaderMessage);
   var client = ZAFClient.init();
   client.invoke('resize', {
