@@ -6,6 +6,10 @@ $(function () {
     width:'100%',
     height:'220px'
   });
+  var token = "";
+  client.metadata().then(function(metadata) {
+    token = metadata.settings.token;
+  });
 
   client.get('ticket.requester.id').then(
     function(data){
@@ -20,7 +24,7 @@ $(function () {
             client.get('ticket.comments.0.value').then(
                 function(data){
                   var latestComment = data['ticket.comments.0.value'];
-                  getSentimentScore(client, extractContent(latestComment));
+                  getSentimentScore(client, extractContent(latestComment), token);
                 }
             );
 
@@ -39,11 +43,14 @@ function extractContent(value){
   return div.textContent || div.innerText;
 }
 
-function getSentimentScore(client, ticketText) {
+function getSentimentScore(client, ticketText, token) {
   var settings = {
-  //url: 'http://localhost:3000/sentimentScoreZendesk',
-  url: 'https://whispering-retreat-36489.herokuapp.com/sentimentScoreZendesk',
-  headers: {"Authorization": "Bearer PyOAYC3N62gqpf"},
+  // url: 'http://localhost:3000/sentimentScoreZendesk',
+  url: 'http://localhost:3000/sentimentalanalysis',
+  //url: 'https://whispering-retreat-36489.herokuapp.com/sentimentScoreZendesk',
+  // headers: {"Authorization": "Bearer PyOAYC3N62gqpf"},
+  headers: {"x-auth": token},
+  secure: true,
   type: 'POST',
   contentType: 'application/json',
   data: JSON.stringify({"text": ticketText})
@@ -54,10 +61,12 @@ function getSentimentScore(client, ticketText) {
       var sentimentScoreResponse = JSON.parse(data);
       var sentimentScore = sentimentScoreResponse.sentimentScore || 0;
       var sentimentComparativeScore = sentimentScoreResponse.comparativeScore || 0;
-      // var sentimentImage = sentimentScoreResponse.sentimentImage;
       var sentimentImage = getSentimentImageURL(sentimentComparativeScore || 0);
       showSentimentScoreInfo(sentimentScore, sentimentComparativeScore, sentimentImage);
     },
+    function(response){
+      showError(response);
+    }
   );
 }
 
@@ -95,4 +104,16 @@ function getSentimentImageURL(comparativeScore) {
  }
  // neutral
  return "images/confused.png";
+}
+
+function showError(response){
+  var error_data = {
+    'status': response.status,
+    'statusText': response.statusText
+  };
+
+  var source = $('#error-template').html();
+  var template = Handlebars.compile(source);
+  var html = template(error_data);
+  $('#content').html(html);
 }
