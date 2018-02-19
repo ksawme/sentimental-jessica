@@ -1,0 +1,8 @@
+{
+  "app": {
+    "name": "Sentimental Jessica",
+    "short_description": "Checks the most recent customer comment & provide sentimental analysis score.",
+    "long_description": "Cogzidel Technologies introduces Jessica, your personal AI assistant! Jessica cares deeply about support.\n\nJessica tells you when your customer is happy :) or angry :(. Try Jessica.\n\nJessica analyses the most recent customer comment to determine the sentiment of the customer & rates it on a whole number scale.\n\nIt can tell you if the tone of the message is angry, sad, indifferent or happy. It portrays it via an emoji in the ticket sidebar!",
+    "installation_instructions": "Install the app & Jessica should get to work immediately in the ticket sidebar. Secret authentication token is provided by default & you should be good to go!"
+  }
+}
