@@ -20,7 +20,7 @@
     "secure": false,
     "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YThhMDZiNGU4OGFhMzAwMTRkNmZkNzgiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTE4OTk1MTI1fQ.3NHyLgNfhwQ9WyZB2tjlsKi5mBCCF3ETsnRMjywkKzc"
   }],
-  "domainWhitelist": ["localhost:3000", "https://whispering-retreat-36489.herokuapp.com"],
+  "domainWhitelist": ["localhost:3000", "whispering-retreat-36489.herokuapp.com"],
   "version": "1.0",
   "frameworkVersion": "2.0"
 }

@@ -47,11 +47,11 @@ function getSentimentScore(client, ticketText, token) {
   var settings = {
   url: 'https://whispering-retreat-36489.herokuapp.com/sentimentalanalysis',
   headers: {"x-auth": token},
+  secure:true,
   type: 'POST',
   contentType: 'application/json',
   data: JSON.stringify({"text": ticketText})
 };
-
   client.request(settings).then(
     function(data) {
       var sentimentScoreResponse = JSON.parse(data);
