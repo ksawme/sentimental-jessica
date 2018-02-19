@@ -1,12 +1,12 @@
 {
-  "name": "Sentimental Jessica",
+  "name": "Sentimental Jessica - Lite Edition",
   "author": {
     "name": "Swaminathan Kasiviswanathan",
     "email": "ksawme@cogzidel.com",
     "url": "http://ksaw.me"
   },
   "defaultLocale": "en",
-  "private": false,
+  "private": true,
   "location": {
     "support": {
       "ticket_sidebar": "assets/iframe.html"
