@@ -9,6 +9,7 @@ $(function () {
   var token = "";
   client.metadata().then(function(metadata) {
     token = metadata.settings.token;
+    console.log("Token value from metadata is " + token);
   });
 
   client.get('ticket.requester.id').then(
@@ -24,6 +25,7 @@ $(function () {
             client.get('ticket.comments.0.value').then(
                 function(data){
                   var latestComment = data['ticket.comments.0.value'];
+                  console.log("Token value is " + token);
                   getSentimentScore(client, extractContent(latestComment), token);
                 }
             );
@@ -44,14 +46,15 @@ function extractContent(value){
 }
 
 function getSentimentScore(client, ticketText, token) {
-  var settings = {
-  url: 'https://whispering-retreat-36489.herokuapp.com/sentimentalanalysis',
-  headers: {"x-auth": token},
-  secure:true,
-  type: 'POST',
-  contentType: 'application/json',
-  data: JSON.stringify({"text": ticketText})
-};
+  var settings = { url: "https://whispering-retreat-36489.herokuapp.com/sentimentalanalysis", // headers: {"x-auth": token},
+    headers: {"Authorization": "Bearer {{setting.token}}"},
+    secure: true, 
+    type: "POST", 
+    contentType: "application/json", 
+    data: JSON.stringify({ text: ticketText }
+    ) };
+
+  console.log('Settings data is ' + JSON.stringify(settings));
   client.request(settings).then(
     function(data) {
       var sentimentScoreResponse = JSON.parse(data);
