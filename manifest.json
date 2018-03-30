@@ -1,25 +1,28 @@
 {
-  "name": "Sentimental Jessica - Lite Edition",
-  "author": {
-    "name": "Swaminathan Kasiviswanathan",
-    "email": "ksawme@cogzidel.com",
-    "url": "http://ksaw.me"
-  },
-  "defaultLocale": "en",
-  "private": true,
-  "location": {
-    "support": {
-      "ticket_sidebar": "assets/iframe.html"
-    }
-  },
-  "parameters": [
-  {
-    "name": "token",
-    "type": "text",
-    "required": true,
-    "secure": true
-  }],
-  "domainWhitelist": ["localhost:3000", "whispering-retreat-36489.herokuapp.com"],
-  "version": "1.0",
-  "frameworkVersion": "2.0"
+    "name": "Sentimental Jessica - Lite Edition",
+    "author": {
+        "name": "Swaminathan Kasiviswanathan",
+        "email": "ksawme@cogzidel.com",
+        "url": "http://ksaw.me"
+    },
+    "defaultLocale": "en",
+    "private": true,
+    "location": {
+        "support": {
+            "ticket_sidebar": "assets/iframe.html"
+        }
+    },
+    "parameters": [{
+        "name": "token",
+        "type": "text",
+        "required": true,
+        "secure": true,
+        "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YThhMDZiNGU4OGFhMzAwMTRkNmZkNzgiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTE4OTk1MTI1fQ.3NHyLgNfhwQ9WyZB2tjlsKi5mBCCF3ETsnRMjywkKzc"
+    }],
+    "domainWhitelist": [
+        "localhost:3000",
+        "whispering-retreat-36489.herokuapp.com"
+    ],
+    "version": "1.0",
+    "frameworkVersion": "2.0"
 }
