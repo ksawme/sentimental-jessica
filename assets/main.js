@@ -6,10 +6,6 @@ $(function() {
         width: '100%',
         height: '220px'
     });
-    var token = "";
-    client.metadata().then(function(metadata) {
-        token = metadata.settings.token;
-    });
 
     client.get('ticket.requester.id').then(
         function(data) {
@@ -24,7 +20,7 @@ $(function() {
                         client.get('ticket.comments.0.value').then(
                             function(data) {
                                 var latestComment = data['ticket.comments.0.value'];
-                                getSentimentScore(client, extractContent(latestComment), token);
+                                getSentimentScore(client, extractContent(latestComment));
                             }
                         );
                     } else {
@@ -42,7 +38,7 @@ function extractContent(value) {
     return div.textContent || div.innerText;
 }
 
-function getSentimentScore(client, ticketText, token) {
+function getSentimentScore(client, ticketText) {
     var settings = {
         url: "https://whispering-retreat-36489.herokuapp.com/sentimentalanalysis",
         headers: { "x-auth": "{{setting.token}}" },
