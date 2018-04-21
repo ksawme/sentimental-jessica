@@ -19,9 +19,9 @@ function getSentimentImageURL(comparativeScore) {
 
 function showSentimentScoreInfo(sentimentScore, comparativeScore, sentimentImage) {
     var sentimentScoreData = {
-        "sentimentScore": sentimentScore,
+        sentimentScore,
         "comparativeScore": comparativeScore.toFixed(2),
-        "sentimentImage": sentimentImage,
+        sentimentImage,
         "sentimentScorePercentage": ((comparativeScore / 5) * 100).toFixed(2)
     };
 
@@ -33,8 +33,8 @@ function showSentimentScoreInfo(sentimentScore, comparativeScore, sentimentImage
 
 function showNoSentimentScoreInfo(sentimentScore, comparativeScore) {
     var sentimentScoreData = {
-        "sentimentScore": sentimentScore,
-        "comparativeScore": comparativeScore
+        sentimentScore,
+        comparativeScore
     };
     var source = $("#no-sentiment-score-template").html();
     var template = Handlebars.compile(source);
