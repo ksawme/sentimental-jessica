@@ -32,13 +32,13 @@ function showSentimentScoreInfo(sentimentScore, comparativeScore, sentimentImage
 }
 
 function showNoSentimentScoreInfo(sentimentScore, comparativeScore) {
-    var sentiment_score_data = {
+    var sentimentScoreData = {
         "sentimentScore": sentimentScore,
         "comparativeScore": comparativeScore
     };
     var source = $("#no-sentiment-score-template").html();
     var template = Handlebars.compile(source);
-    var html = template(sentiment_score_data);
+    var html = template(sentimentScoreData);
     $("#content").html(html);
 }
 
