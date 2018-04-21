@@ -1,37 +1,3 @@
-$(function() {
-    var loaderMessage = '<div class="loader">Relax! Jessica is now performing sentimental analysis on the latest ticket response...</div>'
-    $('#content').html(loaderMessage);
-    var client = ZAFClient.init();
-    client.invoke('resize', {
-        width: '100%',
-        height: '220px'
-    });
-
-    client.get('ticket.requester.id').then(
-        function(data) {
-            var user_id = data['ticket.requester.id'];
-
-            client.get('ticket.comments.0.author.id').then(
-                function(data) {
-
-                    var latest_comment_author_id = data['ticket.comments.0.author.id'];
-
-                    if (user_id === latest_comment_author_id) {
-                        client.get('ticket.comments.0.value').then(
-                            function(data) {
-                                var latestComment = data['ticket.comments.0.value'];
-                                getSentimentScore(client, extractContent(latestComment));
-                            }
-                        );
-                    } else {
-                        showNoSentimentScoreInfo(null, null);
-                    }
-                }
-            );
-        }
-    );
-});
-
 function extractContent(value) {
     var div = document.createElement('div');
     div.innerHTML = value;
@@ -109,3 +75,31 @@ function showError(response) {
     var html = template(error_data);
     $('#content').html(html);
 }
+
+$(function() {
+    var loaderMessage =
+        '<div class="loader">Relax! Jessica is now performing sentimental analysis on the latest ticket response...</div>';
+    $("#content").html(loaderMessage);
+    var client = ZAFClient.init();
+    client.invoke("resize", {
+        width: "100%",
+        height: "220px"
+    });
+
+    client.get("ticket.requester.id").then(function(data) {
+        var user_id = data["ticket.requester.id"];
+
+        client.get("ticket.comments.0.author.id").then(function(data) {
+            var latest_comment_author_id = data["ticket.comments.0.author.id"];
+
+            if (user_id === latest_comment_author_id) {
+                client.get("ticket.comments.0.value").then(function(data) {
+                    var latestComment = data["ticket.comments.0.value"];
+                    getSentimentScore(client, extractContent(latestComment));
+                });
+            } else {
+                showNoSentimentScoreInfo(null, null);
+            }
+        });
+    });
+});
