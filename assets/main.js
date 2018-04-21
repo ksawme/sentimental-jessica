@@ -1,5 +1,5 @@
 function extractContent(value) {
-    var div = document.createElement('div');
+    var div = document.createElement("div");
     div.innerHTML = value;
     return div.textContent || div.innerText;
 }
@@ -19,39 +19,39 @@ function getSentimentImageURL(comparativeScore) {
 
 function showSentimentScoreInfo(sentimentScore, comparativeScore, sentimentImage) {
     var sentiment_score_data = {
-        'sentimentScore': sentimentScore,
-        'comparativeScore': comparativeScore.toFixed(2),
-        'sentimentImage': sentimentImage,
-        'sentimentScorePercentage': ((comparativeScore / 5) * 100).toFixed(2)
+        "sentimentScore": sentimentScore,
+        "comparativeScore": comparativeScore.toFixed(2),
+        "sentimentImage": sentimentImage,
+        "sentimentScorePercentage": ((comparativeScore / 5) * 100).toFixed(2)
     };
 
-    var source = $('#sentiment-score-template').html();
+    var source = $("#sentiment-score-template").html();
     var template = Handlebars.compile(source);
     var html = template(sentiment_score_data);
-    $('#content').html(html);
+    $("#content").html(html);
 }
 
 function showNoSentimentScoreInfo(sentimentScore, comparativeScore) {
     var sentiment_score_data = {
-        'sentimentScore': sentimentScore,
-        'comparativeScore': comparativeScore
+        "sentimentScore": sentimentScore,
+        "comparativeScore": comparativeScore
     };
-    var source = $('#no-sentiment-score-template').html();
+    var source = $("#no-sentiment-score-template").html();
     var template = Handlebars.compile(source);
     var html = template(sentiment_score_data);
-    $('#content').html(html);
+    $("#content").html(html);
 }
 
 function showError(response) {
     var error_data = {
-        'status': response.status,
-        'statusText': response.statusText
+        "status": response.status,
+        "statusText": response.statusText
     };
 
-    var source = $('#error-template').html();
+    var source = $("#error-template").html();
     var template = Handlebars.compile(source);
     var html = template(error_data);
-    $('#content').html(html);
+    $("#content").html(html);
 }
 
 function getSentimentScore(client, ticketText) {
@@ -84,8 +84,7 @@ function getSentimentScore(client, ticketText) {
 }
 
 $(function() {
-    var loaderMessage =
-        '<div class="loader">Relax! Jessica is now performing sentimental analysis on the latest ticket response...</div>';
+    var loaderMessage = "<div class='loader'>Relax! Jessica is now performing sentimental analysis on the latest ticket response...</div>";
     $("#content").html(loaderMessage);
     var client = ZAFClient.init();
     client.invoke("resize", {
