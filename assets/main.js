@@ -18,7 +18,7 @@ function getSentimentImageURL(comparativeScore) {
 }
 
 function showSentimentScoreInfo(sentimentScore, comparativeScore, sentimentImage) {
-    var sentiment_score_data = {
+    var sentimentScoreData = {
         "sentimentScore": sentimentScore,
         "comparativeScore": comparativeScore.toFixed(2),
         "sentimentImage": sentimentImage,
@@ -27,7 +27,7 @@ function showSentimentScoreInfo(sentimentScore, comparativeScore, sentimentImage
 
     var source = $("#sentiment-score-template").html();
     var template = Handlebars.compile(source);
-    var html = template(sentiment_score_data);
+    var html = template(sentimentScoreData);
     $("#content").html(html);
 }
 
@@ -43,14 +43,14 @@ function showNoSentimentScoreInfo(sentimentScore, comparativeScore) {
 }
 
 function showError(response) {
-    var error_data = {
+    var errorData = {
         "status": response.status,
         "statusText": response.statusText
     };
 
     var source = $("#error-template").html();
     var template = Handlebars.compile(source);
-    var html = template(error_data);
+    var html = template(errorData);
     $("#content").html(html);
 }
 
@@ -93,12 +93,12 @@ $(function() {
     });
 
     client.get("ticket.requester.id").then(function(data) {
-        var user_id = data["ticket.requester.id"];
+        var userID = data["ticket.requester.id"];
 
         client.get("ticket.comments.0.author.id").then(function(data) {
-            var latest_comment_author_id = data["ticket.comments.0.author.id"];
+            var latestCommentAuthorID = data["ticket.comments.0.author.id"];
 
-            if (user_id === latest_comment_author_id) {
+            if (userID === latestCommentAuthorID) {
                 client.get("ticket.comments.0.value").then(function(data) {
                     var latestComment = data["ticket.comments.0.value"];
                     getSentimentScore(client, extractContent(latestComment));
