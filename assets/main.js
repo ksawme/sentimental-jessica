@@ -4,28 +4,17 @@ function extractContent(value) {
     return div.textContent || div.innerText;
 }
 
-function getSentimentScore(client, ticketText) {
-    var settings = {
-        url: "https://whispering-retreat-36489.herokuapp.com/sentimentalanalysis",
-        headers: { "x-auth": "{{setting.token}}" },
-        secure: true,
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({ text: ticketText })
-    };
-
-    client.request(settings).then(
-        function(data) {
-            var sentimentScoreResponse = JSON.parse(data);
-            var sentimentScore = sentimentScoreResponse.sentimentScore || 0;
-            var sentimentComparativeScore = sentimentScoreResponse.comparativeScore || 0;
-            var sentimentImage = getSentimentImageURL(sentimentComparativeScore || 0);
-            showSentimentScoreInfo(sentimentScore, sentimentComparativeScore, sentimentImage);
-        },
-        function(response) {
-            showError(response);
-        }
-    );
+function getSentimentImageURL(comparativeScore) {
+    if (comparativeScore > 0) {
+        // happy
+        return "images/happy.png";
+    }
+    if (comparativeScore < 0) {
+        // angry
+        return "images/angry.png";
+    }
+    // neutral
+    return "images/confused.png";
 }
 
 function showSentimentScoreInfo(sentimentScore, comparativeScore, sentimentImage) {
@@ -53,17 +42,6 @@ function showNoSentimentScoreInfo(sentimentScore, comparativeScore) {
     $('#content').html(html);
 }
 
-function getSentimentImageURL(comparativeScore) {
-    if (comparativeScore > 0) { // happy
-        return "images/happy.png";
-    }
-    if (comparativeScore < 0) { // angry
-        return "images/angry.png";
-    }
-    // neutral
-    return "images/confused.png";
-}
-
 function showError(response) {
     var error_data = {
         'status': response.status,
@@ -74,6 +52,35 @@ function showError(response) {
     var template = Handlebars.compile(source);
     var html = template(error_data);
     $('#content').html(html);
+}
+
+function getSentimentScore(client, ticketText) {
+    var settings = {
+        url: "https://whispering-retreat-36489.herokuapp.com/sentimentalanalysis",
+        headers: { "x-auth": "{{setting.token}}" },
+        secure: true,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ text: ticketText })
+    };
+
+    client.request(settings).then(
+        function(data) {
+            var sentimentScoreResponse = JSON.parse(data);
+            var sentimentScore = sentimentScoreResponse.sentimentScore || 0;
+            var sentimentComparativeScore =
+                sentimentScoreResponse.comparativeScore || 0;
+            var sentimentImage = getSentimentImageURL(sentimentComparativeScore || 0);
+            showSentimentScoreInfo(
+                sentimentScore,
+                sentimentComparativeScore,
+                sentimentImage
+            );
+        },
+        function(response) {
+            showError(response);
+        }
+    );
 }
 
 $(function() {
