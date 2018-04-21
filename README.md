@@ -1,5 +1,7 @@
 # Sentimental Jessica
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e83bde6302c9424486dee3d774143df3)](https://app.codacy.com/app/ksawme/sentimental-jessica?utm_source=github.com&utm_medium=referral&utm_content=ksawme/sentimental-jessica&utm_campaign=badger)
+
 Checks the most recent customer comment & provide sentimental analysis score.
 
 ### The following information is displayed:
